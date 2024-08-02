@@ -1,0 +1,4 @@
+docker run --name pihole-exporter --restart unless-stopped  -d   --network="host"   \
+  -e 'PIHOLE_HOSTNAME=10.17.12.109'   \
+  -e "PIHOLE_API_TOKEN=7fbb877b86ef5b6137da99ebd31a3fc26a0d25ed25afb8fa8e053b2271e04619"   \
+  -e 'INTERVAL=10s'   -e 'PORT=9617'   -p 9617:9617   ekofr/pihole-exporter:v0.4.0
