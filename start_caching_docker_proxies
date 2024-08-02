@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+set -ex
+
+docker run -d -p 5050:5000 \
+    -e REGISTRY_PROXY_REMOTEURL=https://registry-1.docker.io \
+    --restart always \
+    --name registry-docker.io registry:2
+
+docker run -d -p 5051:5000 \
+    -e REGISTRY_PROXY_REMOTEURL=https://registry.k8s.io \
+    --restart always \
+    --name registry-registry.k8s.io registry:2
+
+docker run -d -p 5052:5000 \
+    -e REGISTRY_PROXY_REMOTEURL=https://quay.io \
+    --restart always \
+    --name registry-quay.io registry:2
+
+docker run -d -p 5053:5000 \
+    -e REGISTRY_PROXY_REMOTEURL=https://gcr.io \
+    --restart always \
+    --name registry-gcr.io registry:2
+
+docker run -d -p 5054:5000 \
+    -e REGISTRY_PROXY_REMOTEURL=https://ghcr.io \
+    --restart always \
+    --name registry-ghcr.io registry:2
