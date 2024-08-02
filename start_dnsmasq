@@ -1,0 +1,13 @@
+docker run --restart unless-stopped --name=dnsmasq -d --cap-add=NET_ADMIN --net=vlan-13net \
+  --ip 10.17.13.252 quay.io/poseidon/dnsmasq:v0.5.0-36-g23d6729 \
+  -d -q -p0   --dhcp-range=10.17.13.3,10.17.13.224   \
+  --dhcp-option=option:router,10.17.13.249   \
+  --dhcp-option=option:dns-server,10.17.13.254   \
+  --enable-tftp   --tftp-root=/var/lib/tftpboot   \
+  --dhcp-match=set:bios,option:client-arch,0 --dhcp-boot=tag:bios,undionly.kpxe   \
+  --dhcp-match=set:efi32,option:client-arch,6 --dhcp-boot=tag:efi32,ipxe.efi   \
+  --dhcp-match=set:efibc,option:client-arch,7 --dhcp-boot=tag:efibc,ipxe.efi   \
+  --dhcp-match=set:efi64,option:client-arch,9 --dhcp-boot=tag:efi64,ipxe.efi   \
+  --dhcp-userclass=set:ipxe,iPXE   \
+  --dhcp-boot=tag:ipxe,http://10.17.13.251:8080/boot.ipxe   \
+  --log-queries   --log-dhcp
