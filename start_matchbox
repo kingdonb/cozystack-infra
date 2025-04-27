@@ -1,9 +1,9 @@
 # docker run --restart unless-stopped --name=matchbox -d --net=vlan-13net \
 #   --ip 10.17.13.251 ghcr.io/aenix-io/cozystack/matchbox:v1.7.6-v0.15.0 \
 #   -address=:8080   -log-level=debug
-# docker run --restart unless-stopped --name=matchbox -d --net=vlan-13net \
-#   --ip 10.17.13.251 kingdonb/matchbox:latest \
-#   -address=:8080   -log-level=debug
 docker run --restart unless-stopped --name=matchbox -d --net=vlan-13net \
-  --ip 10.17.13.251 ghcr.io/aenix-io/cozystack/matchbox:v1.9.3-v0.25.1 \
+  --ip 10.17.13.251 kingdonb/matchbox:v1.9.5-cozy-spin \
   -address=:8080   -log-level=debug
+# docker run --restart unless-stopped --name=matchbox -d --net=vlan-13net \
+#   --ip 10.17.13.251 ghcr.io/aenix-io/cozystack/matchbox:v1.9.3-v0.25.1 \
+#   -address=:8080   -log-level=debug
